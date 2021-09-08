@@ -1,26 +1,27 @@
 
 // Creo un oggetto carta
 var card = {
-    name: "Anaba Shaman",
+    name: "Dispel",
     launchCost: {
         common: 0,
         w: 0,
-        ublue: 0,
+        ublue: 1,
         black: 0,
-        red: 1,
+        red: 0,
         green: 0.
     },
-    cardType: "Creatrue",
-    subType: "Shaman",
+    cardType: "Instant",
+    subType: "Magic",
     expansion: {
-        expansionID: 9,
+        expansionID: "NaN",
         name: "Flawless lands",
         rarity: "common",
         maxCard: 350,
+        currentCard: 145,
     },
     flavourText: {
-        author: "John Bond",
-        quote: "Just try to take the bulls by the horns",
+        author: "Speaker Zegana",
+        quote: "Civilization will subsume us unless we overwhelm it instead",
     },
     abilities: [
         {
@@ -29,49 +30,25 @@ var card = {
                 white: 0,
                 ublue: 0,
                 black: 0,
-                red: 3,
-                green: 0,
-            },
-            description: "Deals 1 damage to target creature or player!",
-        },
-        {
-            launchCost: {
-                common: 0,
-                white: 0,
-                ublue: 2,
-                black: 0,
                 red: 0,
                 green: 0,
             },
-            description: "Delete Gabriele in one shot"
+            description: "Counter target instant spell!",
         },
-        {
-            launchCost: {
-                common: 0,
-                white: 0,
-                ublue: 0,
-                black: 0,
-                red: 0,
-                green: 5,
-            },
-            description: "Purchase spotify Premium!"
-        }
+        
     ],
     illustrator: {
         id: 125,
-        name: "Simon",
-        surname: "Bisley",
-        dateOfBirth: "12/25/1976",
-        placeOfBirth: "Sidney",
+        name: "Chase",
+        surname: "Stone",
+        dateOfBirth: "11/24/1989",
+        placeOfBirth: "Chicago",
     },
-    illustrationImage: "..&imageIllustration.jpg", //Immagine di illustrazione
-
-    currentCard: 145,
-    constitution: 2,
-    strength: 2,
+    constitution: 0,
+    strength: 0,
     borderHue: "#000",
     
-    cardImage: "..img/cardImage.jpg", //Immagine della carta finita
+    cardImage: "img/magic-card.jpg", //Immagine della carta finita
 
 
 
@@ -104,35 +81,49 @@ if (card.abilities.length > 0){
 let cardDisplayHTML = 
 
 // per fare questo:` //alt + 9
-`<ul class= "card-element">    
-    <li>Name: ${card.name}</li>
-    <li>Launch cost: ${card.combineManaCost()}</li>
-    <li>Specific launch cost: ${card.launchCost}</li>
-    <li>Card type: ${card.cardType} ${card.subType}</li>
+`<ul class= "card-element">  
+    
+<li>-- CARD ILLUSTRATION --</li>
+    <img src="${card.cardImage}">
+    
+    <li>-- CARD INFO --
+        <ul class: "card-info">    
+            <li>Name: ${card.name}</li>
+            <li>Launch cost: ${card.combineManaCost()}</li>
+            <li>Card type: ${card.cardType} ${card.subType}</li>
+            <li>Border Color: ${card.borderHue}</li>
+            
+    </li>
+    </ul>
+    
     <li>-- EXPANSIONS --    
         <ul class="expansions">
             <li>Expansion name: ${card.expansion.name}</li>
             <li>Expansion rarity: ${card.expansion["rarity"]}</li>
             <li>Maximum cards in expansion: ${card.expansion["maxCard"]}</li>
+            <li>Current card in expansion: ${card.expansion["currentCard"]}</li>
         </ul>
     </li>
-    <li>Text description: <em>${card.flavourText["quote"]}</em>  <strong>"${card.flavourText["author"]}"</strong></li>
+    <li>Text description: <em>"${card.flavourText["quote"]}"</em>  <strong>${card.flavourText["author"]}</strong></li>
+    
     <li>-- ABILITIES -- 
         <ul class: "abilities">
-            <li>First Ability: <strong>"${card.abilities[0]["launchCost"]["red"]} RED MANA"</strong> ${card.abilities[0]["description"]}</li>
-            <li>Second Ability: <strong>"${card.abilities[1]["launchCost"]["ublue"]} BLU MANA"</strong> ${card.abilities[1]["description"]}</li>
-            <li>Third Ability: <strong>"${card.abilities[2]["launchCost"]["green"]} GREEN MANA"</strong> ${card.abilities[2]["description"]}</li>
+            <li>First Ability: <strong>"${card.abilities[0]["launchCost"]["red"]}  MANA"</strong> ${card.abilities[0]["description"]}</li>
         </ul>
     </li>
+    
     <li>-- ILLUSTRATOR --
         <ul>
-            <li>ID: ${card.illustrator["id"]}// The illustration was made by: ${card.illustrator["name"]} ${card.illustrator["surname"]} born in ${card.illustrator["placeOfBirth"]} on ${card.illustrator["dateOfBirth"]}</li>
+            <li>ID: <strong>${card.illustrator["id"]}</strong> // The illustration was made by: ${card.illustrator["name"]} ${card.illustrator["surname"]} born in ${card.illustrator["placeOfBirth"]} on ${card.illustrator["dateOfBirth"]}</li>
         </ul>
     </li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
+    <li>-- POWER! --
+        <ul>
+            <li>Attack Power: ${card.strength} // Defense Value: ${card.constitution}</li>
+            <li>Because is a magical card!</li>
+        </ul>
+    </li>
+
+    
 </ul>`;
 document.getElementById("deck").innerHTML += cardDisplayHTML;
